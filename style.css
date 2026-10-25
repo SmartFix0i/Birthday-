@@ -1,0 +1,330 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --pink: #ff5caa;
+    --light-pink: #ffb6d9;
+    --purple: #a855f7;
+    --white: #ffffff;
+    --dark: #210d2e;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(
+        135deg,
+        #180c2e,
+        #45134f,
+        #811b65,
+        #32134d
+    );
+    background-size: 300% 300%;
+    animation: backgroundMove 12s ease infinite;
+    color: var(--white);
+    overflow-x: hidden;
+}
+
+@keyframes backgroundMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.container {
+    width: 100%;
+    max-width: 760px;
+    margin: auto;
+    padding: 35px 20px 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.hero {
+    min-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.top-heart {
+    font-size: 55px;
+    animation: heartbeat 1.5s infinite;
+    margin-bottom: 25px;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    25% { transform: scale(1.15); }
+    40% { transform: scale(1); }
+    60% { transform: scale(1.12); }
+}
+
+.small-text {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: #ffc1df;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: clamp(38px, 8vw, 66px);
+    line-height: 1.25;
+    font-weight: 600;
+}
+
+.name {
+    font-family: 'Dancing Script', cursive;
+    color: #ff8fc8;
+    text-shadow: 0 0 25px #ff4fa7;
+}
+
+.subtitle {
+    max-width: 450px;
+    font-size: 14px;
+    color: #f8dff0;
+    line-height: 1.9;
+    margin-top: 20px;
+}
+
+.cake {
+    font-size: 95px;
+    margin: 25px 0;
+    filter: drop-shadow(0 0 25px #ff71b8);
+    animation: cakeFloat 3s ease-in-out infinite;
+}
+
+@keyframes cakeFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+}
+
+button {
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    border: none;
+    transition: 0.3s ease;
+}
+
+.surprise-btn,
+.love-btn {
+    padding: 15px 28px;
+    border-radius: 50px;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    background: linear-gradient(90deg, #ff4fa7, #b44aff);
+    box-shadow: 0 0 25px #ff4fa755;
+    margin-top: 15px;
+}
+
+.surprise-btn:hover,
+.love-btn:hover {
+    transform: translateY(-4px) scale(1.04);
+    box-shadow: 0 0 35px #ff4fa799;
+}
+
+.hint {
+    font-size: 11px;
+    color: #e8c5e9;
+    margin-top: 20px;
+}
+
+.message-card,
+.final-card {
+    width: 100%;
+    padding: 35px 25px;
+    margin: 30px auto;
+    text-align: center;
+    border-radius: 28px;
+    border: 1px solid #ffffff25;
+    background: linear-gradient(
+        145deg,
+        #ffffff13,
+        #ffffff08
+    );
+    box-shadow: 0 15px 60px #00000030;
+    backdrop-filter: blur(15px);
+    animation: cardAppear 0.8s ease;
+}
+
+@keyframes cardAppear {
+    from {
+        opacity: 0;
+        transform: translateY(35px) scale(0.96);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.card-decoration {
+    font-size: 55px;
+    margin-bottom: 15px;
+}
+
+h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(30px, 6vw, 43px);
+    color: #ff9acb;
+    margin-bottom: 20px;
+}
+
+.divider {
+    color: #ffacd5;
+    margin: 20px 0;
+}
+
+.message {
+    font-size: 14px;
+    line-height: 2.1;
+    color: #fff0f8;
+    text-align: center;
+}
+
+.message strong {
+    color: #ffacd5;
+}
+
+.signature {
+    margin-top: 30px;
+    line-height: 2;
+    color: #f6cce5;
+    font-size: 13px;
+}
+
+.signature span {
+    font-family: 'Dancing Script', cursive;
+    color: #ff8fc8;
+    font-size: 25px;
+}
+
+.hidden {
+    display: none;
+}
+
+.final-card {
+    padding: 45px 25px;
+}
+
+.big-heart {
+    font-size: 85px;
+    margin-bottom: 20px;
+    animation: heartbeat 1.5s infinite;
+}
+
+.final-card p {
+    font-size: 14px;
+    line-height: 2;
+    color: #fbe6f5;
+    margin: 20px 0;
+}
+
+.final-card h3 {
+    font-family: 'Dancing Script', cursive;
+    color: #ff9acb;
+    font-size: 28px;
+    margin-top: 20px;
+}
+
+.final-emojis {
+    font-size: 25px;
+    margin: 25px 0;
+}
+
+footer {
+    text-align: center;
+    font-size: 11px;
+    line-height: 2;
+    color: #e9c6e7;
+    padding: 30px 0 15px;
+}
+
+.heart {
+    position: fixed;
+    bottom: -50px;
+    pointer-events: none;
+    z-index: 1;
+    animation: floatUp linear forwards;
+    opacity: 0;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.85;
+    }
+    90% {
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.confetti {
+    position: fixed;
+    top: -20px;
+    width: 9px;
+    height: 14px;
+    z-index: 10;
+    pointer-events: none;
+    animation: confettiFall 3.5s linear forwards;
+}
+
+@keyframes confettiFall {
+    to {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 25px 15px;
+    }
+
+    .hero {
+        min-height: 82vh;
+    }
+
+    .message-card,
+    .final-card {
+        padding: 30px 19px;
+        border-radius: 22px;
+    }
+
+    .message {
+        font-size: 13px;
+        line-height: 2;
+    }
+
+    .cake {
+        font-size: 80px;
+    }
+
+    .small-text {
+        letter-spacing: 2px;
+        font-size: 10px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+    }
+}
