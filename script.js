@@ -12,15 +12,12 @@ const finalCard = $("finalCard");
 const againBtn = $("againBtn");
 
 const heartsContainer = $("hearts-container");
-
 const gallerySection = $("gallerySection");
 const letterSection = $("letterSection");
 
 const reducedMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)"
 ).matches;
-
-let musicPlaying = false;
 
 const flowerEmojis = [
     "🌸", "🦋", "🌷", "✨",
@@ -32,25 +29,18 @@ const flowerEmojis = [
 // ===================================
 
 function createFloatingFlower() {
-
     if (document.hidden || !heartsContainer) return;
 
     const flower = document.createElement("div");
 
     flower.className = "heart";
-
     flower.textContent =
-        flowerEmojis[
-            Math.floor(Math.random() * flowerEmojis.length)
-        ];
+        flowerEmojis[Math.floor(Math.random() * flowerEmojis.length)];
 
     flower.style.left = Math.random() * 100 + "vw";
-
-    flower.style.fontSize =
-        (15 + Math.random() * 22) + "px";
+    flower.style.fontSize = (15 + Math.random() * 22) + "px";
 
     const duration = 6 + Math.random() * 4;
-
     flower.style.animationDuration = duration + "s";
 
     heartsContainer.appendChild(flower);
@@ -58,7 +48,7 @@ function createFloatingFlower() {
     setTimeout(() => flower.remove(), duration * 1000);
 }
 
-if (!reducedMotion) {
+if (!reducedMotion && heartsContainer) {
     setInterval(createFloatingFlower, 650);
 }
 
@@ -67,7 +57,6 @@ if (!reducedMotion) {
 // ===================================
 
 function launchConfetti() {
-
     if (reducedMotion) return;
 
     const colors = [
@@ -80,11 +69,9 @@ function launchConfetti() {
     ];
 
     for (let i = 0; i < 100; i++) {
-
         const piece = document.createElement("div");
 
         piece.className = "confetti";
-
         piece.style.left = Math.random() * 100 + "vw";
 
         piece.style.backgroundColor =
@@ -110,7 +97,6 @@ function launchConfetti() {
 // ===================================
 
 function launchFireworks() {
-
     if (reducedMotion) return;
 
     const colors = [
@@ -120,29 +106,23 @@ function launchFireworks() {
         "#b99aff"
     ];
 
+    const container =
+        $("fireworks-container") || document.body;
+
     for (let i = 0; i < 18; i++) {
-
         setTimeout(() => {
-
             const firework = document.createElement("div");
 
             firework.className = "firework";
-
-            firework.style.left =
-                (10 + Math.random() * 80) + "vw";
-
-            firework.style.top =
-                (10 + Math.random() * 65) + "vh";
+            firework.style.left = (10 + Math.random() * 80) + "vw";
+            firework.style.top = (10 + Math.random() * 65) + "vh";
 
             firework.style.color =
                 colors[Math.floor(Math.random() * colors.length)];
 
-            const container = $("fireworks-container") || document.body;
-
             container.appendChild(firework);
 
             setTimeout(() => firework.remove(), 1100);
-
         }, i * 130);
     }
 }
@@ -152,18 +132,15 @@ function launchFireworks() {
 // ===================================
 
 function showSection(section) {
-
     if (!section) return;
 
     section.classList.remove("hidden");
 
     setTimeout(() => {
-
         section.scrollIntoView({
             behavior: reducedMotion ? "auto" : "smooth",
             block: "center"
         });
-
     }, 100);
 }
 
@@ -172,18 +149,12 @@ function showSection(section) {
 // ===================================
 
 if (surpriseBtn) {
-
     surpriseBtn.addEventListener("click", () => {
 
         showSection(messageCard);
 
-        if (gallerySection) {
-            gallerySection.classList.remove("hidden");
-        }
-
-        if (letterSection) {
-            letterSection.classList.remove("hidden");
-        }
+        gallerySection?.classList.remove("hidden");
+        letterSection?.classList.remove("hidden");
 
         launchConfetti();
 
@@ -199,7 +170,6 @@ if (surpriseBtn) {
 // ===================================
 
 if (nextWishBtn) {
-
     nextWishBtn.addEventListener("click", () => {
 
         showSection(finalCard);
@@ -219,15 +189,11 @@ if (nextWishBtn) {
 // ===================================
 
 if (againBtn) {
-
     againBtn.addEventListener("click", () => {
 
-        if (finalCard) {
-            finalCard.classList.add("hidden");
-        }
+        finalCard?.classList.add("hidden");
 
         if (messageCard) {
-
             messageCard.classList.remove("hidden");
 
             messageCard.scrollIntoView({
@@ -248,35 +214,31 @@ const envelopeBtn = $("envelopeBtn");
 const secretLetter = $("secretLetter");
 
 if (envelopeBtn && secretLetter) {
-
     envelopeBtn.addEventListener("click", () => {
 
         secretLetter.classList.toggle("hidden");
 
-        if (secretLetter.classList.contains("hidden")) {
+        const isHidden =
+            secretLetter.classList.contains("hidden");
 
+        if (isHidden) {
             envelopeBtn.innerHTML =
                 '<span class="envelope-icon">💌</span><span>Tap to open your letter</span><span class="envelope-sparkle">✦</span>';
-
         } else {
-
             envelopeBtn.innerHTML =
                 '<span class="envelope-icon">🕊️</span><span>Your letter is open!</span>';
 
             launchConfetti();
 
             setTimeout(() => {
-
                 secretLetter.scrollIntoView({
                     behavior: reducedMotion ? "auto" : "smooth",
                     block: "center"
                 });
-
             }, 100);
         }
     });
 }
-
 
 // ===================================
 // SMART PHOTO GALLERY
@@ -314,7 +276,6 @@ photoCards.forEach((card, index) => {
         if (extensionIndex >= imageExtensions.length) {
 
             if (placeholder) {
-
                 placeholder.innerHTML = `
                     <span>📸</span>
                     <small>PHOTO NOT FOUND</small>
@@ -322,13 +283,11 @@ photoCards.forEach((card, index) => {
             }
 
             console.error("Photo not found:", imageBase);
-
             return;
         }
 
-        const extension = imageExtensions[extensionIndex];
-
-        const imagePath = `${imageBase}.${extension}`;
+        const imagePath =
+            `${imageBase}.${imageExtensions[extensionIndex]}`;
 
         const image = new Image();
 
@@ -337,7 +296,6 @@ photoCards.forEach((card, index) => {
             loadedImagePath = imagePath;
 
             if (placeholder) {
-
                 placeholder.innerHTML = "";
 
                 const img = document.createElement("img");
@@ -366,23 +324,16 @@ photoCards.forEach((card, index) => {
 
     findPhoto();
 
-    // OPEN LIGHTBOX
-
     card.addEventListener("click", () => {
 
         if (!loadedImagePath) {
-
-            alert(
-                "Photo not found! Please check the filename and images folder. ❤️"
-            );
-
+            alert("Photo not found! Check your images folder. ❤️");
             return;
         }
 
         if (!lightbox || !lightboxImage) return;
 
         lightboxImage.src = loadedImagePath;
-
         lightbox.classList.remove("hidden");
 
         document.body.style.overflow = "hidden";
@@ -398,32 +349,20 @@ function closeLightbox() {
     if (!lightbox || !lightboxImage) return;
 
     lightbox.classList.add("hidden");
-
     lightboxImage.src = "";
 
     document.body.style.overflow = "";
 }
 
-if (lightboxClose) {
+lightboxClose?.addEventListener("click", closeLightbox);
 
-    lightboxClose.addEventListener(
-        "click",
-        closeLightbox
-    );
-}
-
-if (lightbox) {
-
-    lightbox.addEventListener("click", (event) => {
-
-        if (event.target === lightbox) {
-            closeLightbox();
-        }
-    });
-}
+lightbox?.addEventListener("click", (event) => {
+    if (event.target === lightbox) {
+        closeLightbox();
+    }
+});
 
 document.addEventListener("keydown", (event) => {
-
     if (event.key === "Escape") {
         closeLightbox();
     }
@@ -431,7 +370,7 @@ document.addEventListener("keydown", (event) => {
 
 // ===================================
 // BACKGROUND MUSIC
-// MP3, MPEG, OGG, WAV, M4A
+// Mobile + Desktop
 // ===================================
 
 const birthdayMusic = $("birthdayMusic");
@@ -439,115 +378,56 @@ const musicBtn = $("musicBtn");
 const musicIcon = $("musicIcon");
 const musicLabel = $("musicLabel");
 
-let currentMusicIndex = 0;
-let musicSources = [];
+let musicPlaying = false;
+
+function updateMusicButton(playing) {
+
+    musicPlaying = playing;
+
+    musicBtn?.classList.toggle("playing", playing);
+
+    if (musicIcon) {
+        musicIcon.textContent = "♫";
+    }
+
+    if (musicLabel) {
+        musicLabel.textContent =
+            playing ? "Pause Music" : "Play Music";
+    }
+}
 
 if (birthdayMusic && musicBtn) {
 
-    // Read all audio sources from HTML
+    // Browser-compatible audio player
+    birthdayMusic.preload = "auto";
 
-    musicSources = Array.from(
-        birthdayMusic.querySelectorAll("source")
-    ).map(source => source.src);
+    musicBtn.addEventListener("click", async () => {
 
-    // Update player appearance
-
-    function updateMusicButton(playing) {
-
-        musicPlaying = playing;
-
-        musicBtn.classList.toggle("playing", playing);
-
-        if (musicIcon) {
-            musicIcon.textContent = playing ? "♫" : "♫";
-        }
-
-        if (musicLabel) {
-            musicLabel.textContent =
-                playing ? "Pause Music" : "Play Music";
-        }
-    }
-
-    // Try each available audio file
-
-    async function playMusicFrom(index) {
-
-        if (index >= musicSources.length) {
-
-            updateMusicButton(false);
-
-            alert(
-                "Music file nahi mili! Please check your actual song filename and folder. ❤️"
-            );
-
-            console.error(
-                "All music files failed to load:",
-                musicSources
-            );
-
+        if (!birthdayMusic.paused) {
+            birthdayMusic.pause();
             return;
         }
 
-        currentMusicIndex = index;
-
-        const musicPath = musicSources[index];
-
-        birthdayMusic.pause();
-
-        birthdayMusic.src = musicPath;
-
-        birthdayMusic.load();
-
         try {
+
+            // Play directly after user's tap.
+            // This is important for mobile browsers.
 
             await birthdayMusic.play();
 
             updateMusicButton(true);
 
-            console.log("Music playing:", musicPath);
-
         } catch (error) {
 
-            console.error(
-                "Music failed:",
-                musicPath,
-                error
-            );
-
-            // Try next audio format
-
-            playMusicFrom(index + 1);
-        }
-    }
-
-    // MUSIC BUTTON CLICK
-
-    musicBtn.addEventListener("click", async () => {
-
-        if (musicPlaying && !birthdayMusic.paused) {
-
-            birthdayMusic.pause();
+            console.error("Music playback error:", error);
 
             updateMusicButton(false);
 
-            return;
-        }
-
-        if (musicSources.length === 0) {
-
             alert(
-                "HTML mein music source nahi mila. Please audio source add karo."
+                "Song play nahi ho raha. Check karo ki music file ka naam aur path HTML mein correct hai. ❤️"
             );
-
-            return;
         }
-
-        // Start from first file when starting again
-
-        await playMusicFrom(0);
     });
-
-    // MUSIC EVENTS
 
     birthdayMusic.addEventListener("play", () => {
         updateMusicButton(true);
@@ -563,14 +443,14 @@ if (birthdayMusic && musicBtn) {
 
     birthdayMusic.addEventListener("error", () => {
         console.error(
-            "Audio loading error:",
+            "Audio file error:",
             birthdayMusic.currentSrc
         );
     });
 }
 
 // ===================================
-// PAGE READY
+// WEBSITE READY
 // ===================================
 
 console.log("🎉 Shahina's Birthday Website Ready!");
