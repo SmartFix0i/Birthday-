@@ -1,31 +1,49 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#24113d">
-    <title>Happy Birthday! 🎂</title>
+    <meta name="theme-color" content="#020b20">
+    <meta name="description" content="A special birthday surprise for Shahina.">
+    <title>Happy Birthday Shahina! 🎂</title>
+
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Dancing+Script:wght@500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+
     <div class="stars" aria-hidden="true"></div>
     <div id="hearts-container" aria-hidden="true"></div>
+    <div id="fireworks-container" aria-hidden="true"></div>
 
-    <main class="container">
+
+    <main class="container" id="mainContent">
+
+        <!-- Original hero -->
         <section class="hero" id="hero">
             <div class="top-icon" aria-hidden="true">🌸</div>
             <p class="eyebrow">08 · 12 · 2002</p>
             <p class="eyebrow">THE DAY WORLD BECAME A LITTLE MORE BEAUTIFUL</p>
+
             <h1>Happy Birthday,<br><span class="name">Shahina ✨</span></h1>
+
             <p class="subtitle">
                 Today is all about celebrating you and the wonderful person you are.
             </p>
+
             <div class="cake" aria-hidden="true">🎂</div>
-            <button class="primary-btn" id="surpriseBtn">Open Your Birthday Surprise 🎁</button>
+
+            <button class="primary-btn" id="surpriseBtn">
+                Open Your Birthday Surprise 🎁
+            </button>
+
             <p class="hint">A SPECIAL PAGE FOR A DAY THAT DESERVES TO SHINE 🌷</p>
+
+            <div class="scroll-indicator">↓</div>
         </section>
 
+        <!-- Original birthday wishes: text unchanged -->
         <section class="wish-card hidden" id="messageCard">
             <div class="card-icon" aria-hidden="true">💌</div>
             <p class="eyebrow">A FEW WORDS FOR YOUR SPECIAL DAY</p>
@@ -53,7 +71,7 @@
                 </p>
                 <p class="highlight">
                     Stay happy, stay blessed, and may Allah always keep you
-                    smiling. Ameen! ❤️
+                    smiling. Ameen! 🤲🏻
                 </p>
             </div>
 
@@ -62,9 +80,85 @@
                 <span>Have an amazing year ahead! 🌷</span>
             </div>
 
-            <button class="secondary-btn" id="loveBtn">One More Birthday Wish ✨</button>
+            <button class="secondary-btn" id="loveBtn">
+                One More Birthday Wish ✨
+            </button>
         </section>
 
+        <!-- Photo memories -->
+        <section class="extra-section hidden" id="gallerySection">
+            <div class="section-heading">
+                <span>📸</span>
+                <p class="eyebrow">LITTLE MOMENTS, BEAUTIFUL MEMORIES</p>
+                <h2>Beautiful Memories</h2>
+                <p>Some moments deserve to be remembered forever.</p>
+            </div>
+
+            <div class="gallery-grid">
+                <button class="photo-card" data-photo="images/photo1.jpg" aria-label="Open memory one">
+                    <div class="photo-placeholder photo-one">
+                        <span>🌸</span>
+                        <small>Memory 01</small>
+                    </div>
+                </button>
+
+                <button class="photo-card" data-photo="images/photo2.jpg" aria-label="Open memory two">
+                    <div class="photo-placeholder photo-two">
+                        <span>✨</span>
+                        <small>Memory 02</small>
+                    </div>
+                </button>
+
+                <button class="photo-card" data-photo="images/photo3.jpg" aria-label="Open memory three">
+                    <div class="photo-placeholder photo-three">
+                        <span>🌸</span>
+                        <small>Memory 03</small>
+                    </div>
+                </button>
+
+                <button class="photo-card" data-photo="images/photo4.jpg" aria-label="Open memory four">
+                    <div class="photo-placeholder photo-four">
+                        <span>🌷</span>
+                        <small>Memory 04</small>
+                    </div>
+                </button>
+            </div>
+            <p class="section-note">Made for the Birthday Queen 👑</p>
+        </section>
+
+
+        <!-- Secret letter -->
+        <section class="extra-section hidden" id="letterSection">
+            <div class="section-heading">
+                <span>💌</span>
+                <p class="eyebrow">A LITTLE SOMETHING EXTRA</p>
+                <h2>A Secret Letter</h2>
+                <p>There is one more little surprise waiting for you.</p>
+            </div>
+
+            <button class="envelope" id="envelopeBtn" aria-label="Open secret letter">
+                <span class="envelope-icon">💌</span>
+                <span>Tap to open your letter</span>
+                <span class="envelope-sparkle">✦</span>
+            </button>
+
+            <div class="secret-letter hidden" id="secretLetter">
+                <div class="letter-icon">🌷</div>
+                <h3>WISHES FOR A BEAUTIFUL YEAR AHEAD</h3>
+                <p>
+                    May Allah always guide your steps, protect your heart,
+                    accept your duas, and fill every chapter of your life
+                    with peace, happiness and barakah.
+                </p>
+                <p>
+                    May you always find reasons to smile and people who
+                    bring kindness into your life.
+                </p>
+                <div class="letter-sign">With warm wishes🌸 </div>
+            </div>
+        </section>
+
+        <!-- Original final wishes: text unchanged -->
         <section class="final-card hidden" id="finalCard">
             <div class="big-icon" aria-hidden="true">🌸</div>
             <h2>WISHES FOR A BEAUTIFUL YEAR AHEAD </h2>
@@ -78,14 +172,36 @@
             </p>
             <h3>Keep smiling and keep shining! 🌸</h3>
             <div class="final-emojis" aria-hidden="true">🎀 🌷 🎂 🤲🏻 ✨</div>
-            <button class="primary-btn" id="againBtn">Read Your Wishes Again 💌</button>
+            <button class="primary-btn" id="againBtn">
+                Read Your Wishes Again 💌
+            </button>
         </section>
+
+        <!-- Music -->
+        <audio id="birthdayMusic" loop preload="none">
+            <source src="./images/birthday-music.mp3" type="audio/mpeg">
+            <source src="./images/birthday-music.mpeg" type="audio/mpeg">
+            <source src="./images/birthday-music.ogg" type="audio/ogg">
+            <source src="./images/birthday-music.wav" type="audio/wav">
+            <source src="./images/birthday-music.m4a" type="audio/mp4">
+        </audio>
+
+        <button class="music-button" id="musicBtn" aria-label="Play or pause music">
+            <span id="musicIcon">♫</span>
+            <span id="musicLabel">Play Music</span>
+        </button>
 
         <footer>
             <p>Made with warm wishes</p>
             <p>May your year be as lovely as your smile. ✨</p>
         </footer>
     </main>
+
+    <!-- Photo lightbox -->
+    <div class="lightbox hidden" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose" aria-label="Close photo">✕</button>
+        <img src="" alt="Birthday memory" id="lightboxImage">
+    </div>
 
     <script src="script.js"></script>
 </body>
